@@ -2,20 +2,19 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
 
 class UserSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        DB::table('users')->insert([
+        User::updateOrCreate([
+            'email' => 'admin@osella.com',
+        ], [
             'name' => 'Admin',
-            'email' => 'admin@company.com',
             'password' => Hash::make('password123'),
-            'created_at' => now(),
-            'updated_at' => now()
         ]);
     }
 }
